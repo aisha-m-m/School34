@@ -94,3 +94,5 @@ school34.db
 
 # Local overrides
 appsettings.*.local.json
+
+/universaty
