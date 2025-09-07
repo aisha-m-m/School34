@@ -1,0 +1,7 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='800' height='480' viewBox='0 0 800 480'>
+  <rect width='100%' height='100%' fill='#1a365d'/>
+  <circle cx='160' cy='200' r='80' fill='#bee3f8'/>
+  <text x='320' y='220' fill='#ebf8ff' font-family='Segoe UI, Arial' font-size='36'>Лучший ученик</text>
+  <text x='320' y='260' fill='#90cdf4' font-family='Segoe UI, Arial' font-size='24'>Отличная успеваемость</text>
+</svg>
+

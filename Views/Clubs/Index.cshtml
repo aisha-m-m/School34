@@ -1,0 +1,22 @@
+@model IEnumerable<School34.Models.Club>
+@{
+    ViewData["Title"] = "Наши кружки";
+}
+<h2 class="mb-3">Наши кружки</h2>
+<div class="row row-cols-1 row-cols-md-3 g-3">
+@foreach (var c in Model)
+{
+    <div class="col">
+        <div class="card h-100">
+            <img src="@(string.IsNullOrWhiteSpace(c.PhotoUrl) ? Url.Content("~/images/club-generic.svg") : c.PhotoUrl)" class="card-img-top" alt="@c.Name" />
+            <div class="card-body">
+                <h5 class="card-title">@c.Name</h5>
+                @if (!string.IsNullOrWhiteSpace(c.Description))
+                {
+                    <p class="card-text text-muted">@c.Description</p>
+                }
+            </div>
+        </div>
+    </div>
+}
+</div>

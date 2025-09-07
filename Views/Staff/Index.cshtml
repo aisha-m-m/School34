@@ -1,0 +1,25 @@
+@model IEnumerable<School34.Models.StaffMember>
+@{
+    ViewData["Title"] = "Администрация";
+}
+<h2 class="mb-3">Администрация и учителя</h2>
+<div class="row row-cols-1 row-cols-md-2 g-3">
+@foreach (var s in Model)
+{
+    <div class="col">
+        <div class="card h-100">
+            <div class="row g-0 h-100">
+                <div class="col-4">
+                    <img src="@(string.IsNullOrWhiteSpace(s.PhotoUrl) ? Url.Content("~/images/staff-generic.svg") : s.PhotoUrl)" class="img-fluid rounded-start h-100 object-fit-cover" alt="@s.Name" />
+                </div>
+                <div class="col-8">
+                    <div class="card-body">
+                        <h5 class="card-title mb-1">@s.Name</h5>
+                        <div class="text-muted">@s.Role</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+</div>

@@ -52,3 +52,45 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+# OS/IDE
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.rsuser
+
+# Rider / IntelliJ
+.idea/
+*.iml
+
+# VS Code (keep common shared files)
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# Build/publish/benchmarks
+TestResults/
+BenchmarkDotNet.Artifacts/
+publish/
+dist/
+out/
+*.log
+
+# SQLite and temp databases
+*.db
+*.db-shm
+*.db-wal
+school34.db
+
+# Local overrides
+appsettings.*.local.json

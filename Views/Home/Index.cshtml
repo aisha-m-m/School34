@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Главная";
+}
+
+<div class="row align-items-center">
+    <div class="col-md-7">
+        <h1 class="display-5 mb-3">Добро пожаловать в Школу №34</h1>
+        <p class="lead">Небольшой демонстрационный сайт школы: администрация, лучшие ученики, кружки и расписание занятий.</p>
+        <p>Это учебный проект для дипломной работы. Контент — примерный, изображения можно заменить позже.</p>
+    </div>
+    <div class="col-md-5 text-center">
+        <img src="~/images/hero-school.svg" class="img-fluid rounded shadow-sm" alt="Школа 34" />
+    </div>
+    <div class="col-12 mt-4">
+        <a class="btn btn-primary me-2" asp-controller="Schedule" asp-action="Index">Перейти к расписанию</a>
+        <a class="btn btn-outline-secondary" asp-controller="Account" asp-action="Login">Войти (админ)</a>
+    </div>
+    <p class="text-muted mt-3">Внизу каждой страницы есть ссылка для входа.</p>
+</div>

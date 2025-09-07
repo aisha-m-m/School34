@@ -1,0 +1,80 @@
+@model IEnumerable<School34.Models.ScheduleEntry>
+@{
+    ViewData["Title"] = "Расписание";
+    var classes = (IEnumerable<string>)ViewBag.Classes;
+    var current = (string)ViewBag.CurrentClass;
+}
+
+<div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+    <h2 class="mb-0">Расписание — @current класс</h2>
+    <form method="get" class="d-flex align-items-center gap-2" asp-action="Index">
+        <label class="text-muted">Класс:</label>
+        <select name="cls" class="form-select" style="width:auto" onchange="this.form.submit()">
+            @foreach (var c in classes)
+            {
+                <option value="@c" selected="@(c==current ? "selected" : null)">@c</option>
+            }
+        </select>
+        @if (User?.Identity?.IsAuthenticated ?? false)
+        {
+            <a class="btn btn-primary" asp-action="Create" asp-route-cls="@current">Добавить</a>
+        }
+    </form>
+</div>
+
+<div class="card shadow-sm">
+  <div class="card-body">
+    <div class="table-responsive">
+    <table class="table table-hover align-middle mb-0">
+        <colgroup>
+            <col style="width:28%">
+            <col style="width:16%">
+            <col>
+            @if (User?.Identity?.IsAuthenticated ?? false)
+            {
+                <col style="width:220px">
+            }
+        </colgroup>
+        <thead>
+            <tr>
+                <th class="text-muted">День</th>
+                <th class="text-muted">Время</th>
+                <th class="text-muted">Предмет</th>
+                @if (User?.Identity?.IsAuthenticated ?? false)
+                {
+                    <th class="text-end text-nowrap">Действия</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var e in Model)
+        {
+            <tr>
+                <td>
+                    @{ var ru = System.Globalization.CultureInfo.GetCultureInfo("ru-RU").DateTimeFormat.GetDayName(e.Day);
+                       var day = string.IsNullOrEmpty(ru) ? e.Day.ToString() : char.ToUpper(ru[0]) + ru.Substring(1);
+                    }
+                    <span class="text-nowrap">@day</span>
+                </td>
+                <td class="text-nowrap">@e.Time.ToString("HH:mm")</td>
+                <td>@e.Subject</td>
+                @if (User?.Identity?.IsAuthenticated ?? false)
+                {
+                    <td class="text-end text-nowrap">
+                        <div class="btn-group btn-group-sm" role="group">
+                            <a class="btn btn-outline-secondary" asp-action="Edit" asp-route-id="@e.Id">Редактировать</a>
+                            <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@e.Id">Удалить</a>
+                        </div>
+                    </td>
+                }
+            </tr>
+        }
+        </tbody>
+    </table>
+    </div>
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info mt-3 mb-0">Нет записей для выбранного класса.</div>
+    }
+  </div>
+</div>
